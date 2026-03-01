@@ -42,7 +42,7 @@ nav {
 }
 
 nav .container {
-    display: flex;
+    display: flex;  /* Menggunakan Flexbox */
     justify-content: space-between; 
     align-items: center;
 }
@@ -69,9 +69,10 @@ nav .container {
     text-decoration: none;
     color: var(--dark-text);
     font-weight: 500;
-    transition: 0.3s;
+    transition: 0.3s;  /* Transition */
 }
 
+/* Hover Effect */
 .nav-links a:hover {
     color: var(--primary-color);
 }
@@ -123,16 +124,17 @@ nav .container {
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
-    transition: 0.3s;
+    transition: 0.3s;  /* Transition */
 }
 
 .btn-primary {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3); /* Box Shadow */
 }
 
-.btn-primary:hover {
+/* Hover Effect */
+.btn-primary:hover {  
     transform: translateY(-3px);
     background: #4f46e5;
 }
@@ -161,7 +163,7 @@ nav .container {
 }
 
 .grid-container {
-    display: grid;
+    display: grid;  /* Menggunakan Grid */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
@@ -170,10 +172,19 @@ nav .container {
     background: var(--bg-light);
     padding: 40px;
     border-radius: 20px;
-    transition: 0.3s;
+    transition: 0.3s;     /* Transition */
     border: 1px solid #e2e8f0;
+    animation: reveal-scroll linear;
+    
+    /* Hubungkan animasi dengan scroll */
+    animation-timeline: view();
+    
+    /* Atur kapan animasi mulai dan selesai (saat masuk layar) */
+    animation-range: entry 10% cover 50%;
+    
 }
 
+/* Hover Effect */
 .card:hover {
     background: var(--white);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -188,7 +199,7 @@ nav .container {
 
 /* PORTFOLIO */
 .portfolio-grid {
-    display: grid;
+    display: grid; /* Grid */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
@@ -197,25 +208,32 @@ nav .container {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
+    animation: reveal-scroll linear;
+    
+    /* Hubungkan animasi dengan scroll */
+    animation-timeline: view();
+    
+    /* Atur kapan animasi mulai dan selesai (saat masuk layar) */
+    animation-range: entry 10% cover 50%;
 }
 
 .portfolio-item img {
     width: 100%;
     display: block;
-    transition: 0.5s;
+    transition: 0.5s;  /* Transition */
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent, var(--primary-color));
-    display: flex;
+    background: linear-gradient(transparent, var(--primary-color)); /* Linear Gradient */
+    display: flex;     /* Flexbox */
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
     color: white;
     opacity: 0;
-    transition: 0.4s;
+    transition: 0.4s;  /* Transition */
 }
 
 .portfolio-item:hover .overlay {
@@ -236,9 +254,14 @@ nav .container {
     color: white;
     padding: 50px;
     border-radius: 30px;
-    display: grid;
+    display: grid;   /* Grid */
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    animation: reveal-scroll linear;
+    /* Hubungkan animasi dengan scroll */
+    animation-timeline: view();
+    /* Atur kapan animasi mulai dan selesai (saat masuk layar) */
+    animation-range: entry 10% cover 50%;
 }
 
 .contact-form input, .contact-form textarea {
@@ -268,7 +291,19 @@ footer {
     color: var(--dark-text);
 }
 
-/* MOBILE RESPONSIVE */
+/* Definisi Gerakan Animasi */
+@keyframes reveal-scroll {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* MOBILE RESPONSIVE atau Responsive Design */
 @media (max-width: 768px) {
     .hero .container { flex-direction: column-reverse; text-align: center; }
     .hero-content h1 { font-size: 2.5rem; }
